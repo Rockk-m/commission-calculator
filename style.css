@@ -118,7 +118,7 @@ body {
 .question {
     background: #2a2a38;
     border-radius: 10px;
-    padding: 20px;
+    padding: 20px 20px 25px 20px;
     margin-bottom: 20px;
 }
 
@@ -131,16 +131,25 @@ body {
 
 .reference-image-container {
     margin: 15px 0 20px 0;
+    padding-bottom: 20px;
     text-align: center;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .reference-image {
     max-width: 100%;
-    width: 100%;
+    width: auto;
+    max-height: 300px;
     height: auto;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     border: 2px solid #3a3a4a;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 20px auto; 
 }
 
 .options {
@@ -215,13 +224,19 @@ body {
 }
 
 @media (max-width: 768px) {
+    body {
+        padding: 0;
+    }
+    
     .container {
-        margin: 10px;
-        border-radius: 12px;
+        margin: 0;
+        border-radius: 0;
+        min-height: 100vh;
     }
     
     .header {
-        padding: 20px;
+        padding: 25px 20px;
+        border-radius: 0;
     }
     
     .header h1 {
@@ -229,37 +244,71 @@ body {
     }
     
     .content {
-        padding: 20px;
+        padding: 20px 15px;
     }
     
     .service-choice {
         grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .service-option {
+        padding: 20px;
+    }
+    
+    .service-form-selection {
+        padding: 20px 15px;
+    }
+    
+    .question {
+        padding: 15px;
     }
     
     .options {
         grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    
+    .option {
+        padding: 12px;
     }
     
     .reference-image {
         border-radius: 8px;
+        max-height: 250px;
     }
     
     .total {
-        font-size: 2em;
+        font-size: 2.2em;
+        margin: 15px;
     }
     
     .price-display {
-        padding: 20px;
+        padding: 25px 20px;
+        margin-top: 20px;
+        border-radius: 12px;
     }
 }
 
 @media (max-width: 480px) {
-    body {
-        padding: 10px;
+    .header {
+        padding: 20px 15px;
+    }
+    
+    .content {
+        padding: 15px 12px;
+    }
+    
+    .service-form-selection {
+        padding: 15px 12px;
+    }
+    
+    .question {
+        padding: 12px;
     }
     
     .service-form-title {
-        font-size: 1.2em;
+        font-size: 1.3em;
     }
     
     .question-title {
@@ -267,6 +316,26 @@ body {
     }
     
     .option {
-        padding: 10px 12px;
+        padding: 10px;
+        font-size: 0.95em;
+    }
+    
+    .total {
+        font-size: 2em;
+    }
+    
+    .price-display {
+        padding: 20px 15px;
+    }
+}
+
+/* Larger screens */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1100px;
+    }
+    
+    .reference-image {
+        max-height: 400px;
     }
 }

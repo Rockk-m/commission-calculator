@@ -37,7 +37,7 @@ function createServiceForm(serviceCode, serviceName) {
         <!-- Q2: Complexity -->
         <div class="question">
             <div class="question-title">2. How complex is the character design?</div>
-            <img src="/images/complexity.jpg" alt="Complexity Guide" class="reference-image">
+            <img src="https://lh3.googleusercontent.com/pw/AP1GczNvhBpYTjeNISlXQU9mKx2cjigIyj0G1fqHzAULGPewYEcDwdMfNkwMW214dbsrRhhF4QPKr8HLNrnyL2FjoEOS8Elo6E6CEotAd_nYpNlOeQKWmEfbuEgRGbFv-vfSxITkwZe-3L3oPfM8-aAmZ6cOdg=w1545-h869-s-no-gm?authuser=0" alt="Complexity Guide" class="reference-image">
             <div class="options">
                 <label class="option">
                     <input type="radio" name="${serviceCode}_complexity" value="0">
@@ -95,7 +95,7 @@ function createServiceForm(serviceCode, serviceName) {
         <!-- Q5: Background -->
         <div class="question">
             <div class="question-title">5. What type of Background?</div>
-            <img src="/images/background.jpg" alt="Background Guide" class="reference-image">
+            <img src="https://lh3.googleusercontent.com/pw/AP1GczOoOyDOFoPrgR6ozSM6WV_eDUyYBCG_6m57cLulU3lwmB3xnfR6lFKNULGmF0OhI5NFbX4Z2O5nja1FWhnqA5_25CYB0v5scis0NCbVuuzlrMZ_ib4elZKtMQeX9clugPxEvqno2XrU7saswawDk24_8A=w1545-h869-s-no-gm?authuser=0" alt="Background Guide" class="reference-image">
             <div class="options">
                 <label class="option">
                     <input type="radio" name="${serviceCode}_background" value="0" data-name="Transparent PNG">
