@@ -37,6 +37,7 @@ function createServiceForm(serviceCode, serviceName) {
         <!-- Q2: Complexity -->
         <div class="question">
             <div class="question-title">2. How complex is the character design?</div>
+            <img src="/images/complexity.jpg" alt="Complexity Guide" class="reference-image">
             <div class="options">
                 <label class="option">
                     <input type="radio" name="${serviceCode}_complexity" value="0">
@@ -94,6 +95,7 @@ function createServiceForm(serviceCode, serviceName) {
         <!-- Q5: Background -->
         <div class="question">
             <div class="question-title">5. What type of Background?</div>
+            <img src="/images/background.jpg" alt="Background Guide" class="reference-image">
             <div class="options">
                 <label class="option">
                     <input type="radio" name="${serviceCode}_background" value="0" data-name="Transparent PNG">
