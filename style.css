@@ -20,7 +20,7 @@ body {
 }
 
 .header {
-    background: #292A31;
+    background:  linear-gradient(10deg, #66508f 0%, #281938 100%);
     color: white;
     padding: 30px;
     text-align: center;
@@ -37,4 +37,165 @@ body {
     margin-bottom: 20px;
     border: 2px solid transparent;
     transition: all 0.3s ease;
+}
+
+.step {
+    margin-bottom: 30px;
+}
+
+.step-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #6b3882;
+    margin-bottom: 15px;
+}
+
+.service-choice {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.service-option {
+    background-color: #f8f9fa;
+    border: 3px solid #e0e0e0;
+    border-radius: 15px;
+    padding: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    position: relative;
+}
+
+.service-option:hover {
+    border-color: #7f358e;
+    transform: translateY(-2px);
+}
+
+.service-option.selected {
+    border-color: #7f358e;
+    background: #faf0ff;
+}
+
+.service-option input[type="checkbox"] {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 20px;
+    height: 15px;
+    cursor: pointer;
+}
+
+.service-name {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.service-price {
+    color: #6b3882;
+}
+
+.service-forms {
+    display: none;
+}
+
+.service-forms.visible {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px);}
+}
+
+.service-form-selection {
+    border: 3px solid #faf0ff;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+.question {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    /*margin-bottom: 20px;*/
+}
+
+.question-title {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    background: #faf8fa;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+}
+
+.option:hover {
+    border: #7f358e;
+}
+
+.option.selected {
+    border: #7f358e;
+    background: #faf0ff;
+}
+
+.price-display {
+    background:  linear-gradient(135deg, #6270ae 0%, #614083 100%);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 30px;
+    position: sticky;
+    top: 20px;
+}
+
+.price-display h2 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.total {
+    font-size: 3em;
+    font-weight: bold;
+    margin: 20px;
+}
+
+.breakdown-service {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.service-form-selection {
+    border: 3px solid #7f358e;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+.service-form-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #7f358e;
+    margin-bottom: 20px;
+}
+
+.option span {
+    margin-left: 8px;
 }

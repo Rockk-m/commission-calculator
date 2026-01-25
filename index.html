@@ -13,69 +13,36 @@
             <p>Calculate your commission price</p>
         </div>
         <div class="content">
-            <!-- Colored Sketch -->
-            <div class="service-section" id="section1">
-                <div class="service-header">Colored Sketch (From $35.00)</div>
-
-                <div class="checkbox-group">
-                    <div class="checkbox-wrapper">
-                        <input type="checkbox" id="cs_personal" data-service="cs" data-type="personal">
-                        <label for="cs_personal">Personal</label>
-                    </div>
-                    <div class="checkbox-wrapper diabled">
-                        <input type="checkbox" id="cs_monetized" data-service="cs" data-type="addon" data-percent="60" disabled>
-                        <label for="cs_monetized" class="addon-label">Monetized content (+60%)</label> <br>
-                        <input type="checkbox" id="cs_commercial" data-service="cs" data-type="addon" data-percent="100" disabled>
-                        <label for="cs_commercial" class="addon-label">Commercial merchandising (+100%)</label>
-                    </div>
+            <!--Service Selection-->
+            <div class="step">
+                <div class="step-title">Select Service Type (You can select multiple)</div>
+                <div class="service-choice">
+                    <label class="service-option" data-service="cs">
+                        <input type="checkbox" name="service" value="cs" data-price="35">
+                        <div class="service-name">Colored Sketch</div>
+                        <div class="service-price">From $35.00</div>
+                    </label>
+                    <label class="service-option" data-service="ci">
+                        <input type="checkbox" name="service" value="ci" data-price="65">
+                        <div class="service-name">Character Illustrations</div>
+                        <div class="service-price">From $65.00</div>
+                    </label>
                 </div>
             </div>
 
-            <!-- Character Illustrations -->
-            <div class="service-section" id="section2">
-                <div class="service-header">Character Illustrations (From $65.00)</div>
-
-                <div class="checkbox-group">
-                    <div class="checkbox-wrapper">
-                        <input type="checkbox" id="ci_personal" data-service="ci" data-type="personal">
-                        <label for="ci_personal">Personal</label>
-                    </div>
-                    <div class="checkbox-wrapper diabled">
-                        <input type="checkbox" id="ci_monetized" data-service="ci" data-type="addon" data-percent="60" disabled>
-                        <label for="ci_monetized" class="addon-label">Monetized content (+60%)</label> <br>
-                        <input type="checkbox" id="ci_commercial" data-service="ci" data-type="addon" data-percent="100" disabled>
-                        <label for="ci_commercial" class="addon-label">Commercial merchandising (+100%)</label>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Environment Painting -->
-            <div class="service-section" id="section3">
-                <div class="service-header">Environment painting (From $35.00)</div>
-
-                <div class="checkbox-group">
-                    <div class="checkbox-wrapper">
-                        <input type="checkbox" id="ep_personal" data-service="ep" data-type="personal">
-                        <label for="ep_personal">Personal</label>
-                    </div>
-                    <div class="checkbox-wrapper diabled">
-                        <input type="checkbox" id="ep_monetized" data-service="ep" data-type="addon" data-percent="80" disabled>
-                        <label for="ep_monetized" class="addon-label">Monetized content (+80%)</label> <br>
-                        <input type="checkbox" id="ep_commercial" data-service="ep" data-type="addon" data-percent="100" disabled>
-                        <label for="ep_commercial" class="addon-label">Commercial merchandising (+100%)</label>
-                    </div>
-                </div>
-            </div>
+            <!--Forms Selection-->
+            <div class="service-forms" id="serviceForms"></div>
 
             <!-- Price Display -->
-             <div class="price-display">
+             <div class="price-display" id="priceDisplay" style="display: none;">
                 <h2>Total Price</h2>
                 <div class="total" id="totalPrice">$0.00</div>
-                <div class="breakdown" id="breakdown" style="display: none;"></div>
+                <div class="breakdown" id="breakdown"></div>
              </div>
 
         </div>
     </div>
     <script src="script.js"></script>
+    
 </body>
 </html>
