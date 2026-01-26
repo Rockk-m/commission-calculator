@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Commission Calculator</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
         <div class="header">
@@ -15,15 +17,15 @@
         <div class="content">
             <!--Service Selection-->
             <div class="step">
-                <div class="step-title">Select Service Type (You can select multiple)</div>
+                <div class="step-title">Select Service Type</div>
                 <div class="service-choice">
                     <label class="service-option" data-service="cs">
-                        <input type="checkbox" name="service" value="cs" data-price="35">
+                        <input type="radio" name="service" value="cs" data-price="35">
                         <div class="service-name">Colored Sketch</div>
                         <div class="service-price">From $35.00</div>
                     </label>
                     <label class="service-option" data-service="ci">
-                        <input type="checkbox" name="service" value="ci" data-price="65">
+                        <input type="radio" name="service" value="ci" data-price="65">
                         <div class="service-name">Character Illustrations</div>
                         <div class="service-price">From $65.00</div>
                     </label>
@@ -34,15 +36,24 @@
             <div class="service-forms" id="serviceForms"></div>
 
             <!-- Price Display -->
-             <div class="price-display" id="priceDisplay" style="display: none;">
+            <div class="price-display" id="priceDisplay" style="display: none;">
                 <h2>Total Price</h2>
                 <div class="total" id="totalPrice">$0.00</div>
                 <div class="breakdown" id="breakdown"></div>
-             </div>
+                <div class="commission-actions">
+                    <a href="https://vgen.co/dols_art_" target="_blank" class="action-btn start">
+                        🎨 Start Commission
+                    </a>
+                    <a href="https://dolscommission.carrd.co/?fbclid=PAT01DUAPkGb1leHRuA2FlbQIxMABzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAackFtutJ5Wjve3sGgE89egHE-dddQqfCoaBmZ3roqaUMUImAfPyBxBB1DshWA_aem_c1X-HT_Qsr1as4lWUeSC7w" target="_blank" class="action-btn carrd">
+                        Home
+                    </a>
+                </div>
+            </div>
 
         </div>
     </div>
     <script src="script.js"></script>
-    
+
 </body>
+
 </html>
