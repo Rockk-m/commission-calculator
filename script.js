@@ -226,18 +226,16 @@ function attachEventListeners(serviceCode) {
         }
     });
 
-    formElement.querySelectorAll('.option').forEach(option => {
-        option.addEventListener('click', function (e) {
-            if (e.target.tagName !== 'INPUT') {
-                const input = this.querySelector('input');
-                if (input.type === 'radio') {
-                    input.checked = true;
-                    input.dispatchEvent(new Event('change'));
-                } else {
-                    input.checked = !input.checked;
-                    input.dispatchEvent(new Event('change'));
-                }
+    formElement.querySelectorAll('input[type="radio"]').forEach(radio => {
+        radio.addEventListener('change', function () {
+            const name = this.name;
+            formElement.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+                r.closest('.option').classList.remove('selected');
+            });
+            if (this.checked) {
+                this.closest('.option').classList.add('selected');
             }
+            calculateTotal();
         });
     });
 
