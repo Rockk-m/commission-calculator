@@ -15,6 +15,15 @@ body {
     font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+.currency-note {    
+    font-size: 0.9em;    
+    color: #ccb8da;    
+    margin: 8px 0;    
+    font-weight: 500;    
+    opacity: 0.95;    
+    letter-spacing: 0.5px;
+}
+
 .container {
     max-width: 900px;
     margin: 0 auto;
