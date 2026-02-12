@@ -96,7 +96,7 @@ function createServiceForm(serviceCode, serviceName) {
         <!-- Q5: Background -->
         <div class="question">
             <div class="question-title">5. What type of Background?</div>
-            <img src="https://raw.githubusercontent.com/Rockk-m/commission-calculator/main/images/background.jpg" alt="Background Guide" class="reference-image">
+            <img src="https://raw.githubusercontent.com/Rockk-m/commission-calculator/main/images/backgrounds.jpg" alt="Background Guide" class="reference-image">
             <div class="options">
                 <label class="option">
                     <input type="radio" name="${serviceCode}_background" value="0" data-name="Transparent PNG">
