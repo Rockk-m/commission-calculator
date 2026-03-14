@@ -111,16 +111,16 @@ function createServiceForm(serviceCode, serviceName) {
                     <span>Flat color</span>
                 </label>
                 <label class="option">
-                    <input type="radio" name="${serviceCode}_background" value="20" data-name="Simple backdrop">
-                    <span>Simple flat backdrop (+$20)</span>
+                    <input type="radio" name="${serviceCode}_background" value="40" data-name="Simple backdrop">
+                    <span>Simple flat backdrop (+$40)</span>
                 </label>
                 <label class="option">
-                    <input type="radio" name="${serviceCode}_background" value="45" data-name="Full environment">
-                    <span>Full environment background (+$45)</span>
+                    <input type="radio" name="${serviceCode}_background" value="75" data-name="Full environment">
+                    <span>Full environment background (+$75)</span>
                 </label>
                 <label class="option">
-                    <input type="radio" name="${serviceCode}_background" value="65" data-name="Complex background">
-                    <span>Grand complex background (+$65)</span>
+                    <input type="radio" name="${serviceCode}_background" value="100" data-name="Complex background">
+                    <span>Grand complex background (+$100)</span>
                 </label>
             </div>
         </div>
