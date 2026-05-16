@@ -5,11 +5,14 @@
 }
 
 :root {
-    --accent-border: #2F1B36;
+    --accent-border: #7A4E5E;
+    --accent-main: #7A4E5E;
+    --accent-hover: #8e5b6e;
+    --accent-bg: #2b1d24;
 }
 
 body {
-    background: #0a0a0f;
+    background: #0b0a10;
     min-height: 100vh;
     padding: 20px;
     font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
@@ -27,14 +30,14 @@ body {
 .container {
     max-width: 900px;
     margin: 0 auto;
-    background: #1a1a24;
+    background: #000000;
     border-radius: 16px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
     overflow: hidden;
 }
 
 .header {
-    background: linear-gradient(135deg, #000000 0%, #2F1B36 100%);
+    background: linear-gradient(135deg, #000000 0%, #7A4E5E 100%);
     color: white;
     padding: 30px;
     text-align: center;
@@ -51,7 +54,7 @@ body {
 .step-title {
     font-size: 1.2em;
     font-weight: bold;
-    color: #ad8ec3;
+    color: #d4a8bc;
     margin-bottom: 15px;
     text-shadow: 0 1px 2px rgba(0,0,0,0.7);
 }
@@ -64,8 +67,8 @@ body {
 }
 
 .service-option {
-    background-color: #2a2a38;
-    border: 3px solid #3a3a4a;
+    background-color: #241c28;
+    border: 3px solid #4b3440;
     border-radius: 15px;
     padding: 25px;
     cursor: pointer;
@@ -76,13 +79,13 @@ body {
 }
 
 .service-option:hover {
-    border-color: #7a5a98;
+    border-color: #7A4E5E;
     transform: translateY(-2px);
 }
 
 .service-option.selected {
-    border-color: #7a5a98;
-    background: #2f1f3f;
+    border-color: #7A4E5E;
+    background: #2b1d24;
 }
 
 .service-option input[type="radio"] {
@@ -100,7 +103,7 @@ body {
 }
 
 .service-price {
-    color: #8a6b9e;
+    color: #c18aa1;
 }
 
 .service-forms {
@@ -113,11 +116,14 @@ body {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
+    from { 
+        opacity: 0; 
+        transform: translateY(10px); 
+    }
 }
 
 .service-form-selection {
-    border: 3px solid #3a3a4a;
+    border: 3px solid #4b3440;
     border-radius: 15px;
     padding: 25px;
     margin-bottom: 20px;
@@ -126,13 +132,13 @@ body {
 .service-form-title {
     font-size: 1.5em;
     font-weight: bold;
-    color: #ad8ec3;
+    color: #d4a8bc;
     margin-bottom: 20px;
     text-shadow: 0 1px 2px rgba(0,0,0,0.7);
 }
 
 .question {
-    background: #2a2a38;
+    background: #241c28;
     border-radius: 10px;
     padding: 20px 20px 25px 20px;
     margin-bottom: 20px;
@@ -162,10 +168,10 @@ body {
     height: auto;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    border: 2px solid #3a3a4a;
+    border: 2px solid #4b3440;
     object-fit: contain;
     display: block;
-    margin: 0 auto 20px auto; 
+    margin: 0 auto 20px auto;
 }
 
 .options {
@@ -178,8 +184,8 @@ body {
     display: flex;
     align-items: center;
     padding: 12px 15px;
-    background: #1f1f2e;
-    border: 2px solid #3a3a4a;
+    background: #1a1720;
+    border: 2px solid #4b3440;
     border-radius: 10px;
     color: #e0e0e0;
     cursor: pointer;
@@ -187,12 +193,12 @@ body {
 }
 
 .option:hover {
-    border-color: #7a5a98;
+    border-color: #7A4E5E;
 }
 
 .option.selected {
-    border-color: #7a5a98;
-    background: #2f1f3f;
+    border-color: #7A4E5E;
+    background: #2b1d24;
 }
 
 .option span {
@@ -211,8 +217,8 @@ body {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    border: 2px solid #7a5a98;
-    background: #1f1f2e;
+    border: 2px solid #7A4E5E;
+    background: #1a1720;
     color: #e0e0e0;
     font-size: 1.8em;
     cursor: pointer;
@@ -223,8 +229,8 @@ body {
 }
 
 .counter-btn:hover {
-    background: #2f1f3f;
-    border-color: #ad8ec3;
+    background: #2b1d24;
+    border-color: #d4a8bc;
     transform: scale(1.05);
 }
 
@@ -247,9 +253,9 @@ body {
 .char-pricing-info {
     margin-top: 15px;
     padding: 15px;
-    background: #1f1f2e;
+    background: #1a1720;
     border-radius: 8px;
-    border-left: 3px solid #7a5a98;
+    border-left: 3px solid #7A4E5E;
 }
 
 .pricing-line {
@@ -260,7 +266,7 @@ body {
 }
 
 .price-display {
-    background: linear-gradient(135deg, #000000 0%, #2F1B36 100%);
+    background: linear-gradient(135deg, #000000 0%, #7A4E5E 100%);
     color: white;
     padding: 30px;
     border-radius: 15px;
@@ -340,12 +346,12 @@ body {
 }
 
 .action-btn.carrd {
-    background: #2F1B36 100%
+    background: linear-gradient(135deg, #7A4E5E, #5d3947);
 }
 
 .action-btn.carrd:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 26px rgba(168,85,247,0.45);
+    box-shadow: 0 12px 26px rgba(122,78,94,0.45);
 }
 
 /* Mobile tweak */
@@ -355,7 +361,6 @@ body {
         justify-content: center;
     }
 }
-
 
 @media (max-width: 768px) {
     body {

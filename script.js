@@ -1,10 +1,12 @@
 function createServiceForm(serviceCode, serviceName) {
     const isColoredSketch = serviceCode === 'cs';
+    const isGroup = serviceCode === 'gi';
 
     return ` 
     <div class="service-form-selection" id="form-${serviceCode}">
         <div class="service-form-title">${serviceName}</div>
 
+        ${!isGroup ? `
         <!-- Q1: Illustration Type -->
         <div class="question">
             <div class="question-title">1. What type of Illustration are you looking for?</div>
@@ -35,6 +37,32 @@ function createServiceForm(serviceCode, serviceName) {
                 </label>
             </div>
         </div>
+        ` : `
+        <!-- Q1: Number of Characters -->
+        <div class="question">
+            <div class="question-title">1. How many characters?</div>
+
+            <div class="char-counter">
+                <button type="button" class="counter-btn minus" data-service="${serviceCode}">−</button>
+
+                <input type="number"
+                    class="counter-input"
+                    id="${serviceCode}_char_count"
+                    value="2"
+                    min="2"
+                    max="10"
+                    readonly>
+
+                <button type="button" class="counter-btn plus" data-service="${serviceCode}">+</button>
+            </div>
+
+            <div class="char-pricing-info">
+                <div class="pricing-line">2 characters — Included</div>
+                <div class="pricing-line">3-4 characters — +$70 each</div>
+                <div class="pricing-line">5-10 characters — +$50 each</div>
+            </div>
+        </div>
+        `}
 
         <!-- Q2: Complexity -->
         <div class="question">
@@ -56,27 +84,9 @@ function createServiceForm(serviceCode, serviceName) {
             </div>
         </div>
 
-        <!-- Q3: Number of Characters -->
+        <!-- Q3 Add-ons -->
         <div class="question">
-            <div class="question-title">3. How many characters?</div>
-            <div class="char-counter">
-                <button type="button" class="counter-btn minus" data-service="${serviceCode}">−</button>
-                <input type="number" class="counter-input" id="${serviceCode}_char_count" value="1" min="1" max="10" readonly>
-                <button type="button" class="counter-btn plus" data-service="${serviceCode}">+</button>
-            </div>
-            <div class="char-pricing-info">
-                <div class="pricing-line">1 — No additional cost</div>
-                <div class="pricing-line">2 — 2nd character: +80% of base price</div>
-                <div class="pricing-line">3 — 3rd character: +70% of base price</div>
-            </div>
-            <div class="char-warning" id="${serviceCode}_char_warning" style="display:none;">
-            For requests with more than 3 characters, please consult the artist first.
-            </div>
-        </div>
-
-        <!-- Q4 Add-ons -->
-        <div class="question">
-            <div class="question-title">4. Add-ons (You can select multiple)</div>
+            <div class="question-title">3. Add-ons (You can select multiple)</div>
             <div class="options">
                 <label class="option">
                     <input type="checkbox" name="${serviceCode}_addons" value="${isColoredSketch ? '10' : '15'}" data-name="Pet">
@@ -93,9 +103,10 @@ function createServiceForm(serviceCode, serviceName) {
             </div>
         </div>
 
-        <!-- Q5: Background -->
+        ${!isGroup ? `
+        <!-- Q4: Background -->
         <div class="question">
-            <div class="question-title">5. What type of Background?</div>
+            <div class="question-title">4. What type of Background?</div>
             <img src="https://raw.githubusercontent.com/Rockk-m/commission-calculator/main/images/backgrounds.jpg" alt="Background Guide" class="reference-image">
             <div class="options">
                 <label class="option">
@@ -124,10 +135,11 @@ function createServiceForm(serviceCode, serviceName) {
                 </label>
             </div>
         </div>
+        ` : ''}
 
-        <!-- Q6: Usage -->
+        <!-- Usage -->
         <div class="question">
-            <div class="question-title">6. How will you be using this commission?</div>
+            <div class="question-title">${isGroup ? '4' : '5'}. How will you be using this commission?</div>
             <div class="options">
                 <label class="option">
                     <input type="radio" name="${serviceCode}_usage" value="0">
@@ -144,9 +156,9 @@ function createServiceForm(serviceCode, serviceName) {
             </div>
         </div>
 
-        <!-- Q7: Privacy -->
+        <!-- Privacy -->
          <div class="question">
-            <div class="question-title">7. May I publicly stream / share the work with credit?</div>
+            <div class="question-title">${isGroup ? '5' : '6'}. May I publicly stream / share the work with credit?</div>
             <div class="options">
                 <label class="option">
                     <input type="radio" name="${serviceCode}_privacy" value="0">
@@ -170,8 +182,18 @@ function createServiceForm(serviceCode, serviceName) {
     `;
 }
 
-const servicePrices = { cs: 35, ci: 65 };
-const serviceNames = { cs: 'Colored Sketch', ci: 'Character Illustrations' }
+const servicePrices = { 
+    cs: 35, 
+    ci: 65,
+    gi: 280
+};
+
+const serviceNames = { 
+    cs: 'Colored Sketch', 
+    ci: 'Character Illustrations',
+    gi: 'Group Illustrations'
+}
+
 let activeServices = new Set();
 
 document.querySelectorAll('input[name="service"]').forEach(radio => {
@@ -210,44 +232,41 @@ function attachEventListeners(serviceCode) {
     const plusBtn = formElement.querySelector('.counter-btn.plus');
     const counterInput = formElement.querySelector('.counter-input');
 
-    minusBtn.addEventListener('click', function () {
-        let value = parseInt(counterInput.value);
-        if (value > 1) {
-            counterInput.value = value - 1;
-            calculateTotal();
-        }
-    });
+    if (minusBtn && plusBtn && counterInput) {
 
-    plusBtn.addEventListener('click', function () {
-        let value = parseInt(counterInput.value);
-        if (value < 10) {
-            counterInput.value = value + 1;
-            calculateTotal();
-        }
-    });
+        minusBtn.addEventListener('click', function () {
+            let value = parseInt(counterInput.value);
 
-    formElement.querySelectorAll('input[type="radio"]').forEach(radio => {
-        radio.addEventListener('change', function () {
-            const name = this.name;
-            formElement.querySelectorAll(`input[name="${name}"]`).forEach(r => {
-                r.closest('.option').classList.remove('selected');
-            });
-            if (this.checked) {
-                this.closest('.option').classList.add('selected');
+            const minValue = serviceCode === 'gi' ? 2 : 1;
+
+            if (value > minValue) {
+                counterInput.value = value - 1;
+                calculateTotal();
             }
-            calculateTotal();
         });
-    });
+
+        plusBtn.addEventListener('click', function () {
+            let value = parseInt(counterInput.value);
+
+            if (value < 10) {
+                counterInput.value = value + 1;
+                calculateTotal();
+            }
+        });
+    }
 
     formElement.querySelectorAll('input[type="radio"]').forEach(radio => {
         radio.addEventListener('change', function () {
             const name = this.name;
+
             formElement.querySelectorAll(`input[name="${name}"]`).forEach(r => {
                 r.closest('.option').classList.remove('selected');
             });
+
             if (this.checked) {
                 this.closest('.option').classList.add('selected');
             }
+
             calculateTotal();
         });
     });
@@ -259,6 +278,7 @@ function attachEventListeners(serviceCode) {
             } else {
                 this.closest('.option').classList.remove('selected');
             }
+
             calculateTotal();
         });
     });
@@ -269,79 +289,116 @@ function calculateServicePrice(serviceCode) {
     let total = basePrice;
     let breakdown = [`Base price: $${basePrice.toFixed(2)}`];
 
-    // Q1: Illustration Type
-    const illusType = document.querySelector(`input[name="${serviceCode}_illus_type"]:checked`);
-    if (illusType && parseFloat(illusType.value) > 0) {
-        const amount = parseFloat(illusType.value);
-        total += amount;
-        breakdown.push(`+ ${illusType.parentElement.textContent.trim()}: $${amount.toFixed(2)}`);
+    // Illustration Type
+    if (serviceCode !== 'gi') {
+
+        const illusType = document.querySelector(`input[name="${serviceCode}_illus_type"]:checked`);
+
+        if (illusType && parseFloat(illusType.value) > 0) {
+            const amount = parseFloat(illusType.value);
+
+            total += amount;
+
+            breakdown.push(`+ ${illusType.parentElement.textContent.trim()}: $${amount.toFixed(2)}`);
+        }
     }
 
-    // Q2: Complexity
+    // Complexity
     const complexity = document.querySelector(`input[name="${serviceCode}_complexity"]:checked`);
+
     if (complexity && parseFloat(complexity.value) > 0) {
         const percent = parseFloat(complexity.value);
+
         const amount = total * (percent / 100);
+
         total += amount;
+
         breakdown.push(`+ Complexity (+${percent}%): $${amount.toFixed(2)}`);
     }
 
-    // Q3: Character Count
-    const input = document.getElementById(`${serviceCode}_char_count`);
-    let charCount = parseInt(input.value);
-    const warning = document.getElementById(`${serviceCode}_char_warning`);
+    // Group Character Count
+    if (serviceCode === 'gi') {
 
-    if (charCount > 3) {
-        warning.style.display = 'block';
-        charCount = input.value = 3;
-    } else {
-        warning.style.display = 'none';
+        const input = document.getElementById(`${serviceCode}_char_count`);
+
+        let charCount = parseInt(input.value);
+
+        if (charCount < 2) {
+            charCount = 2;
+        }
+
+        // 3-4 chars
+        if (charCount >= 3) {
+
+            const chars34 = Math.min(charCount, 4) - 2;
+
+            if (chars34 > 0) {
+
+                const amount = chars34 * 70;
+
+                total += amount;
+
+                breakdown.push(`+ Extra characters (3-4): $${amount.toFixed(2)}`);
+            }
+        }
+
+        // 5-10 chars
+        if (charCount >= 5) {
+
+            const chars510 = charCount - 4;
+
+            const amount = chars510 * 50;
+
+            total += amount;
+
+            breakdown.push(`+ Extra characters (5-10): $${amount.toFixed(2)}`);
+        }
     }
 
-    // ราคาตัวแรก (หลัง Q1, Q2)
-    const baseCharacterPrice = total;
-
-    if (charCount >= 2) {
-        const secondCost = baseCharacterPrice * 0.8;
-        total += secondCost;
-        breakdown.push(`+ 2nd character (+80% of base): $${secondCost.toFixed(2)}`);
-    }
-
-    if (charCount === 3) {
-        const thirdCost = baseCharacterPrice * 0.7;
-        total += thirdCost;
-        breakdown.push(`+ 3rd character (+70% of base): $${thirdCost.toFixed(2)}`);
-    }
-
-    // Q4: Add-ons
+    // Add-ons
     document.querySelectorAll(`input[name="${serviceCode}_addons"]:checked`).forEach(addon => {
         const amount = parseFloat(addon.value);
+
         total += amount;
+
         breakdown.push(`+ ${addon.dataset.name}: $${amount.toFixed(2)}`);
     });
 
-    // Q5: Background
-    const background = document.querySelector(`input[name="${serviceCode}_background"]:checked`);
-    if (background && parseFloat(background.value) > 0) {
-        const amount = parseFloat(background.value);
-        total += amount;
-        breakdown.push(`+ ${background.dataset.name}: $${amount.toFixed(2)}`);
+    // Background
+    if (serviceCode !== 'gi') {
+
+        const background = document.querySelector(`input[name="${serviceCode}_background"]:checked`);
+
+        if (background && parseFloat(background.value) > 0) {
+            const amount = parseFloat(background.value);
+
+            total += amount;
+
+            breakdown.push(`+ ${background.dataset.name}: $${amount.toFixed(2)}`);
+        }
     }
 
-    // Q6: Usage
+    // Usage
     const usage = document.querySelector(`input[name="${serviceCode}_usage"]:checked`);
+
     if (usage && parseFloat(usage.value) > 0) {
         const percent = parseFloat(usage.value);
+
         const amount = total * (percent / 100);
+
         total += amount;
+
         breakdown.push(`+ ${usage.parentElement.textContent.trim()}: $${amount.toFixed(2)}`);
     }
 
-    // Q7: Privacy
+    // Privacy
     const privacy = document.querySelector(`input[name="${serviceCode}_privacy"]:checked`);
+
     if (privacy && parseFloat(privacy.value) > 0) {
         const amount = parseFloat(privacy.value);
+
         total += amount;
+
         breakdown.push(`+ NDA privacy fee: $${amount.toFixed(2)}`);
     }
 
