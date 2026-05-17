@@ -303,20 +303,7 @@ function calculateServicePrice(serviceCode) {
         }
     }
 
-    // Complexity
-    const complexity = document.querySelector(`input[name="${serviceCode}_complexity"]:checked`);
-
-    if (complexity && parseFloat(complexity.value) > 0) {
-        const percent = parseFloat(complexity.value);
-
-        const amount = total * (percent / 100);
-
-        total += amount;
-
-        breakdown.push(`+ Complexity (+${percent}%): $${amount.toFixed(2)}`);
-    }
-
-    // Group Character Count
+        // Group Character Count
     if (serviceCode === 'gi') {
 
         const input = document.getElementById(`${serviceCode}_char_count`);
@@ -353,6 +340,19 @@ function calculateServicePrice(serviceCode) {
 
             breakdown.push(`+ Extra characters (5-10): $${amount.toFixed(2)}`);
         }
+    }
+
+    // Complexity
+    const complexity = document.querySelector(`input[name="${serviceCode}_complexity"]:checked`);
+
+    if (complexity && parseFloat(complexity.value) > 0) {
+        const percent = parseFloat(complexity.value);
+
+        const amount = total * (percent / 100);
+
+        total += amount;
+
+        breakdown.push(`+ Complexity (+${percent}%): $${amount.toFixed(2)}`);
     }
 
     // Add-ons
