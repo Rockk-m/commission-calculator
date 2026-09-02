@@ -103,11 +103,12 @@ function createServiceForm(serviceCode, serviceName) {
             </div>
         </div>
 
-        ${!isGroup ? `
+                ${!isGroup ? `
         <!-- Q4: Background -->
         <div class="question">
             <div class="question-title">4. What type of Background?</div>
-            <img src="https://raw.githubusercontent.com/Rockk-m/commission-calculator/main/images/backgrounds.jpg" alt="Background Guide" class="reference-image">
+            <div class="question-subtitle">(sketchy backdrop sample photo)</div>
+            <img src="https://raw.githubusercontent.com/Rockk-m/commission-calculator/main/images/${isColoredSketch ? 'bgsketch.jpg' : 'backgrounds.jpg'}" alt="Background Guide" class="reference-image">
             <div class="options">
                 <label class="option">
                     <input type="radio" name="${serviceCode}_background" value="0" data-name="Transparent PNG">
@@ -121,6 +122,12 @@ function createServiceForm(serviceCode, serviceName) {
                     <input type="radio" name="${serviceCode}_background" value="0" data-name="Flat color">
                     <span>Flat color</span>
                 </label>
+                ${isColoredSketch ? `
+                <label class="option">
+                    <input type="radio" name="${serviceCode}_background" value="15" data-name="Sketchy backdrop">
+                    <span>Sketchy backdrop (+$15)</span>
+                </label>
+                ` : `
                 <label class="option">
                     <input type="radio" name="${serviceCode}_background" value="40" data-name="Simple backdrop">
                     <span>Simple flat backdrop (+$40)</span>
@@ -133,6 +140,7 @@ function createServiceForm(serviceCode, serviceName) {
                     <input type="radio" name="${serviceCode}_background" value="100" data-name="Complex background">
                     <span>Grand complex background (+$100)</span>
                 </label>
+                `}
             </div>
         </div>
         ` : ''}
