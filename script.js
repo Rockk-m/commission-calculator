@@ -1,3 +1,4 @@
+
 function createServiceForm(serviceCode, serviceName) {
     const isColoredSketch = serviceCode === 'cs';
     const isGroup = serviceCode === 'gi';
@@ -20,20 +21,20 @@ function createServiceForm(serviceCode, serviceName) {
                     <span>Bust-up (+$${isColoredSketch ? '5' : '10'})</span>
                 </label>
                 <label class="option">
-                    <input type="radio" name="${serviceCode}_illus_type" value="${isColoredSketch ? '15' : '20'}">
-                    <span>Waist-up (+$${isColoredSketch ? '15' : '20'})</span>
+                    <input type="radio" name="${serviceCode}_illus_type" value="${isColoredSketch ? '15' : '25'}">
+                    <span>Waist-up (+$${isColoredSketch ? '15' : '25'})</span>
                 </label>
                 <label class="option">
-                    <input type="radio" name="${serviceCode}_illus_type" value="${isColoredSketch ? '20' : '28'}">
-                    <span>Hip-up (+$${isColoredSketch ? '20' : '28'})</span>
+                    <input type="radio" name="${serviceCode}_illus_type" value="${isColoredSketch ? '20' : '35'}">
+                    <span>Hip-up (+$${isColoredSketch ? '20' : '35'})</span>
                 </label>
                 <label class="option">
-                    <input type="radio" name="${serviceCode}_illus_type" value="${isColoredSketch ? '25' : '35'}">
-                    <span>Knee-up (+$${isColoredSketch ? '25' : '35'})</span>
+                    <input type="radio" name="${serviceCode}_illus_type" value="${isColoredSketch ? '25' : '45'}">
+                    <span>Knee-up (+$${isColoredSketch ? '25' : '45'})</span>
                 </label>
                 <label class="option">
-                    <input type="radio" name="${serviceCode}_illus_type" value="${isColoredSketch ? '35' : '47'}">
-                    <span>Full body (+$${isColoredSketch ? '35' : '47'})</span>
+                    <input type="radio" name="${serviceCode}_illus_type" value="${isColoredSketch ? '35' : '55'}">
+                    <span>Full body (+$${isColoredSketch ? '35' : '55'})</span>
                 </label>
             </div>
         </div>
@@ -89,21 +90,21 @@ function createServiceForm(serviceCode, serviceName) {
             <div class="question-title">3. Add-ons (You can select multiple)</div>
             <div class="options">
                 <label class="option">
-                    <input type="checkbox" name="${serviceCode}_addons" value="${isColoredSketch ? '10' : '15'}" data-name="Pet">
-                    <span>Pet (+$${isColoredSketch ? '10' : '15'})</span>
+                    <input type="checkbox" name="${serviceCode}_addons" value="${isColoredSketch ? '10' : '20'}" data-name="Pet">
+                    <span>Pet (+$${isColoredSketch ? '10' : '20'})</span>
                 </label>
                 <label class="option">
-                    <input type="checkbox" name="${serviceCode}_addons" value="${isColoredSketch ? '10' : '15'}" data-name="Weapons">
-                    <span>Weapons or tools (+$${isColoredSketch ? '10' : '15'})</span>
+                    <input type="checkbox" name="${serviceCode}_addons" value="${isColoredSketch ? '10' : '20'}" data-name="Weapons">
+                    <span>Weapons or tools (+$${isColoredSketch ? '10' : '20'})</span>
                 </label>
                 <label class="option">
-                    <input type="checkbox" name="${serviceCode}_addons" value="${isColoredSketch ? '15' : '20'}" data-name="Instruments">
-                    <span>Instruments (+$${isColoredSketch ? '15' : '20'})</span>
+                    <input type="checkbox" name="${serviceCode}_addons" value="${isColoredSketch ? '15' : '25'}" data-name="Instruments">
+                    <span>Instruments (+$${isColoredSketch ? '15' : '25'})</span>
                 </label>
             </div>
         </div>
 
-                ${!isGroup ? `
+        ${!isGroup ? `
         <!-- Q4: Background -->
         <div class="question">
             <div class="question-title">4. What type of Background?</div>
@@ -129,16 +130,16 @@ function createServiceForm(serviceCode, serviceName) {
                 </label>
                 ` : `
                 <label class="option">
-                    <input type="radio" name="${serviceCode}_background" value="40" data-name="Simple backdrop">
-                    <span>Simple flat backdrop (+$40)</span>
+                    <input type="radio" name="${serviceCode}_background" value="60" data-name="Simple backdrop">
+                    <span>Simple flat backdrop (+$60)</span>
                 </label>
                 <label class="option">
-                    <input type="radio" name="${serviceCode}_background" value="75" data-name="Full environment">
-                    <span>Full environment background (+$75)</span>
+                    <input type="radio" name="${serviceCode}_background" value="100" data-name="Full environment">
+                    <span>Full environment background (+$100)</span>
                 </label>
                 <label class="option">
-                    <input type="radio" name="${serviceCode}_background" value="100" data-name="Complex background">
-                    <span>Grand complex background (+$100)</span>
+                    <input type="radio" name="${serviceCode}_background" value="130" data-name="Complex background">
+                    <span>Grand complex background (+$130)</span>
                 </label>
                 `}
             </div>
@@ -165,7 +166,7 @@ function createServiceForm(serviceCode, serviceName) {
         </div>
 
         <!-- Privacy -->
-         <div class="question">
+        <div class="question">
             <div class="question-title">${isGroup ? '5' : '6'}. May I publicly stream / share the work with credit?</div>
             <div class="options">
                 <label class="option">
@@ -192,7 +193,7 @@ function createServiceForm(serviceCode, serviceName) {
 
 const servicePrices = { 
     cs: 35, 
-    ci: 65,
+    ci: 75,
     gi: 280
 };
 
@@ -200,7 +201,7 @@ const serviceNames = {
     cs: 'Colored Sketch', 
     ci: 'Character Illustrations',
     gi: 'Group Illustrations'
-}
+};
 
 let activeServices = new Set();
 
@@ -311,7 +312,7 @@ function calculateServicePrice(serviceCode) {
         }
     }
 
-        // Group Character Count
+    // Group Character Count
     if (serviceCode === 'gi') {
 
         const input = document.getElementById(`${serviceCode}_char_count`);
